@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(-45deg, #fffaf0, #f8c3c1);
+}
+
+.wrap {
+  display: flex;
+  width: 1200px;
+  margin: 100px auto;
+  /* background: #999; */
+
+  /* 
+    因為半圓形凸出於父層，表示所佔有的高度是 .wrap
+    而沒有包含半圓形凸出的高度，
+    所以才會加 padding-top 補回來高度 !
+  */
+  padding-top: 75px;
+}
+
+.item {
+  width: 370px;
+  margin: 0 15px;
+  text-align: center;
+  border: 10px solid #f9cec2;
+  background: #fff;
+  border-radius: 20px;
+
+  /* 左右、上下、模糊 */
+  box-shadow: 10px 20px 50px #f7b6a7;
+}
+
+.item .icon {
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  margin: -75px auto 0;
+  font-size: 85px;
+  line-height: 150px;
+  border-radius: 50%;
+  color: #f5afac;
+  position: relative;
+}
+
+.item .icon::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top: 10px solid #f9cec2;
+  border-right: 10px solid #f9cec2;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+
+  /* 
+    東西是放在容器內會從 border 開始計算，
+    所以才需要在 上 左 各 -10px。
+  */
+  top: -10px;
+  left: -10px;
+}
+
+.item .txt {
+  padding: 20px 20px 2em;
+}
+
+.item h3 {
+  color: #f5afac;
+}
+
+.item p {
+  color: #ccc;
+}
+
+.item:hover .fa {
+  animation: shake .2s linear infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
